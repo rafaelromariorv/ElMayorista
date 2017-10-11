@@ -1,0 +1,15 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+<a href="{%url 'inventario:inventario_list' %}"><span class="icon fa-arrow-left "></span></a>
+	<ul>
+	<li><b>Codigo: </b>{{inventario.codigo}}</li>
+	<li><b>Elemento: </b>{{inventario.elemento}}</li>
+	<li><b>Cantidad: </b>{{inventario.cantidad}}</li>
+	<li><b>Descripción: </b>{{inventario.descripcion}}</li>
+	<li><b>Valor Compra: </b>{{inventario.valorCompra}}</li>
+	<li><b>Valor Iva: </b>{{inventario.valorIva}}</li>
+	<li><b>Valor Venta: </b>{{inventario.valorVenta}}</li>
+	</ul>
+	
+{%endblock%}

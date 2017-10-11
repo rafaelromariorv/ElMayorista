@@ -1,0 +1,99 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+
+<h2>lista de proveedores</h2>
+<!--Busqueda de reservacion hacer una clase para ese search-->
+    <div class="busqueda">
+        <form class="navbar-search pull-left" method="POST" action="{%url 'proveedor:buscar'%}" >{% csrf_token%}
+            <input type="text" name="busqueda" class="search-query" placeholder="Buscar">
+            <div class="btn-group">
+                <button class="btn btn-primary" type="submit"><i class="icon fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+<!--Edn Busqueda de reservacion-->
+</BR></BR></BR></BR></BR>
+
+
+
+<table id="example1"  >
+
+    <thead>
+        <tr>
+            <th>Empresa</th>
+            <th>Telefono</th>
+            <th>Ciudad</th>
+            <th>Dirección</th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody id="datosCa">
+    	{% for pr in proveedores %}
+    		<tr>
+    			<td>{{pr.nombreEmpresa}}</td>
+    			<td>{{pr.telefonoUno}}</td>
+    			<td>{{pr.ciudad}}</td>
+    			<td>{{pr.direccion}}</td>
+				<td>
+                    <a href="{% url 'proveedor:proveedor_detail' pr.id %}"><span class="icon fa-eye "></span></a>
+					<a href="{% url 'proveedor:proveedor_edit' pr.id %}"><span class="icon fa-pencil-square-o"></span></a>
+                    <a href="{% url 'proveedor:proveedor_delete' pr.id %}"><span class="icon fa-trash"></span></a>
+				</td>
+    		</tr>
+    	{% endfor %}
+    </tbody>
+</table>
+
+
+
+<!-- Prueba de Ajax -->
+<form method="GET" action="{% url 'proveedor:search'%}" id="search-proveedores">
+    <div>
+        <input type="text" name="nombreEmpresa">
+        <input type="submit" value="Buscar">
+    </div>
+</form>
+
+<div id="datos">
+</div>
+
+<table id="datos">
+    <thead>
+        <tr>
+            <th>Nit</th>
+            <th>Empresa</th>
+            <th>Representante</th>
+        </tr>
+    </thead>
+    <tbody id="datosC">
+        <tr>
+
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- Tabla de prueba-->>
+<div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped" id="tb-detalle">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Producto</th>
+                                <th>Serial #</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+
+
+
+
+
+{%endblock%}

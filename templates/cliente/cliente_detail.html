@@ -1,0 +1,18 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+	<a href="{%url 'cliente:cliente_list' %}"><span class="icon fa-arrow-left "></span></a>
+	<ul>
+	<li><b>Dni: </b>{{cliente.dni}}</li>
+	<li><b>nombre: </b>{{cliente.nombre}}</li>
+	<li><b>apellidos: </b>{{cliente.apellidos}}</li>
+	<li><b>telefono: </b>{{cliente.telefono}}</li>
+	<li><b>correo: </b>{{cliente.correo}}</li>
+	<li><b>ciudad: </b>{{cliente.ciudad}}</li>
+	<li><b>direccion: </b>{{cliente.direccion}}</li>
+	<li><b>banco: </b>{{cliente.banco}}</li>
+	<li><b>Tipo de cuenta: </b>{{cliente.tipoCuenta}}</li>
+	<li><b>Numero de cuenta: </b>{{cliente.numeroCuenta}}</li>
+	</ul>
+
+{%endblock%}

@@ -1,0 +1,14 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+<form method="post">
+	<header>
+        <h2>Perfil de Usuario</h2>
+    </header>
+   
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Submit" />
+</form>
+{%endblock%}

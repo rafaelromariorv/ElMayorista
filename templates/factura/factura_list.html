@@ -1,0 +1,59 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+
+<!--Boton descargar pdf todas las facturas-->
+    <div class="pdf">
+        <form class="navbar-search pull-left" method="POST" action="{%url 'factura:reporte_Facturas'%}">{% csrf_token%}
+          <center><h4>Reporte de ventas</h4>
+          <button class="btn btn-primary" type="submit"><i class="icon fa-file-pdf-o"></i></button>
+        </form>
+    </div>
+    </BR></BR></BR>
+<!--end descargar pdf todas las facturas-->
+
+
+<!--Busqueda de detalles de factura-->
+    <div class="busqueda">
+        <form class="navbar-search pull-left" method="POST" name="detalle_factura" action="{%url 'factura:reporte_Detalle_Factura'%}">{% csrf_token%}
+            <input title="se requiere numero" type="number" name="busqueda" class="search-query" placeholder="Buscar factura"  required>
+            <div class="btn-group">
+                <button class="btn btn-primary" type="submit"><i class="icon fa-file-pdf-o"></i></button>
+            </div>
+        </form>
+    </div>
+
+<!--Edn Busqueda de detalles de factura-->
+</BR></BR></BR></BR>
+
+<table id="example1" class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Factura</th>
+            <th>Fecha</th>
+            <th>Vendedor</th>
+            <th>Cliente</th>
+            <th>Iva</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    	{% for pr in facturas %}
+    		<tr>
+    			<td>{{pr.serie}}</td>
+    			<td>{{pr.fecha}}</td>
+    			<td>{{pr.vendedor}}</td>
+    			<td>{{pr.cliente}}</td>
+    			<td>{{pr.iva}}</td>
+    			<td>{{pr.total}}</td>
+				<td><a href="{% url 'factura:factura_detail' pr.serie %}"><span class="icon fa-eye "></span></a>
+				<a href="{% url 'factura:factura_edit' pr.serie%}"><span class="icon fa-pencil-square-o"></span></a>
+    		</tr>
+    	{% endfor %}
+    </tbody>
+
+</table>
+
+{%endblock%}

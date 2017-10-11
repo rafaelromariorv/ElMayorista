@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		{%load staticfiles%}
+		<title>Mayorista</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="{% static "css/main.css" %}" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body class="landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header" class="alt">
+					<h1><a href="{% url 'usuario:index' %}">El Mayorista</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html" class="icon fa-home">Inicio</a></li>
+							<!--<li>
+								<a href="#" class="icon fa-angle-down">Opciones</a>
+								<ul>
+									<li><a href="generic.html">Generic</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li><a href="elements.html">Elements</a></li>
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option One</a></li>
+											<li><a href="#">Option Two</a></li>
+											<li><a href="#">Option Three</a></li>
+											<li><a href="#">Option Four</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>-->
+							<li><a href="{% url 'usuario:authentication' %}" class="button">Ingresa</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+					<h2>El Mayorista  {{ user.username }}</h2>
+					<p>Empresa Chiquinquireña.</p>
+				</section>
+
+			<!-- Main -->
+				<section id="main" class="container">
+
+					<section class="box special">
+						<header class="major">
+							<h2>Vendiendo productos desechables</h2>
+							<p>Descripcion<br />
+							mas.</p>
+						</header>
+						<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
+					</section>
+
+					<section class="box special features">
+						<div class="features-row">
+							<section>
+								<span class="icon major fa-bolt accent2"></span>
+								<h3>Pisicionamineto</h3>
+								<p>estamos interesados en .</p>
+							</section>
+							<section>
+								<span class="icon major fa-area-chart accent3"></span>
+								<h3>Crecimineto</h3>
+								<p>llevamos mas de x años trabajando.</p>
+							</section>
+						</div>
+						<div class="features-row">
+							<section>
+								<span class="icon major fa-cloud accent6"></span>
+								<h3>Conectados </h3>
+								<p>somos una empresa interesada en que conoscaz nuestros productos.</p>
+							</section>
+							<section>
+								<span class="icon major fa-phone accent5"></span>
+								<h3>Contactanos</h3>
+								<p>Telefono: +57 304 000 00 00.</p>
+							</section>
+						</div>
+					</section>
+
+					<div class="row">
+						<div class="6u 12u(narrower)">
+
+							<section class="box special">
+								<span class="image featured"><img src="images/pic02.jpg" alt="" /></span>
+								<h3>Articulo 1</h3>
+								<p>descripcion.</p>
+								<ul class="actions">
+									<li><a href="#" class="button alt">Leer mas</a></li>
+								</ul>
+							</section>
+
+						</div>
+						<div class="6u 12u(narrower)">
+
+							<section class="box special">
+								<span class="image featured"><img src="images/pic03.jpg" alt="" /></span>
+								<h3>Articulo 2</h3>
+								<p>descripcion.</p>
+								<ul class="actions">
+									<li><a href="#" class="button alt">Leer mas</a></li>
+								</ul>
+							</section>
+
+						</div>
+					</div>
+
+				</section>
+
+			<!-- CTA -->
+				<section id="cta">
+
+					<h2>Registrate</h2>
+					<p>Enviaremos informacion de nuestro negocio, promociones, etc.</p>
+
+					<form>
+						<div class="row uniform 50%">
+							<div class="8u 12u(mobilep)">
+								<input type="email" name="email" id="email" placeholder="Correo Electronico" />
+							</div>
+							<div class="4u 12u(mobilep)">
+								<input type="submit" value="Sign Up" class="fit" />
+							</div>
+						</div>
+					</form>
+
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>Dev: <a href="http://hoodeddeveloper.com">Hooded Developer</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="{%static "js/jquery.min.js"%}"></script>
+			<script src="{%static "js/jquery.dropotron.min.js"%}"></script>
+			<script src="{%static "js/jquery.scrollgress.min.js"%}"></script>
+			<script src="{%static "js/skel.min.js"%}"></script>
+			<script src="{%static "js/util.js"%}"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="{%static "js/main.js"%}"></script>
+
+	</body>
+</html>

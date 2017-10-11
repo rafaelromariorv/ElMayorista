@@ -1,0 +1,48 @@
+{% extends "system_index.html" %}
+
+
+
+{% block system_Contable %}
+	
+
+			
+
+	<a href="{% url 'proveedor:proveedor_list'%}"><span class="icon fa-chevron-left" ></span></a></br></br>
+
+
+	<table id="example1" class="table table-bordered table-striped">
+    
+    <thead>
+        <tr>                                 
+            <th>Empresa</th> 
+            <th>Telefono</th>                              
+            <th>Ciudad</th>
+            <th>Dirección</th>
+            <th></th>  
+                                
+        </tr>
+    </thead>
+    <tbody>
+    	{% if proveedor %}
+	    	{% for proveedor in busqueda %}
+	    		<tr>
+	    			<td>{{proveedor.nombreEmpresa}}</td>
+	    			<td>{{proveedor.telefonoUno}}</td>
+	    			<td>{{proveedor.ciudad}}</td>
+	    			<td>{{proveedor.direccion}}</td>
+					<td><a href="{% url 'proveedor:proveedor_detail' proveedor.id %}"><span class="icon fa-eye "></span></a>
+						<a href="{% url 'proveedor:proveedor_edit' proveedor.id %}"><span class="icon fa-pencil-square-o"></span></a>
+					</td>
+	    		</tr>
+	    	{% endfor %}
+	    {% endif %}
+    </tbody>	
+
+</table>
+
+
+
+
+
+
+{% endblock %}

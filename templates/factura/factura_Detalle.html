@@ -1,0 +1,93 @@
+<\<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Reporte de facturas</title>
+	</head>
+	<body>
+				<center><h1> DISTRIBUIDORA DESECHABLES </br> EL MAYORISTA </h1>
+		    <h6> "La variedad y la atención marcan la diferencia"</br>
+							Calle 11 No.9-86, Chiquinquirá (Boyacá)</br>
+								Tel: 310 569 6085  -  321 921 2008</h6></center>
+		    <h5><p align="left">JAIME HELI QUINTERO RODRÍGUEZ</br>
+		        NIT. 5657839-0</br>
+		        Regimen común</p></h5>
+
+    {% for algo in datoFactura %}
+			<center> <h3>FACTURA DE VENTA: {{algo.serie}} </h3>	</center>
+			<table id="encabezado1" class="table table-bordered table-striped">
+			      <thead>
+			        <tr>
+			             <th style="border:1px solid black; padding: 2px;">VENDIDO A:       {{algo.cliente.nombre}} {{algo.cliente.apellidos}} </th>
+			             <th style="border:1px solid black; padding: 2px;">NIT:             {{algo.cliente}} </th>
+									 <th style="border:1px solid black; padding: 2px;">FECHA:            {{algo.fecha}} </th>
+			        </tr>
+			      </thead>
+			 </table>
+			<table id="encabezado2" class="table table-bordered table-striped">
+						 <thead>
+							 <tr>
+										<th style="border:1px solid black; padding: 2px;">CIUDAD: {{algo.cliente.ciudad}} </th>
+										<th style="border:1px solid black; padding: 2px;">DIREECIÓN: {{algo.cliente.direccion}} </th>
+										<th style="border:1px solid black; padding: 2px;">TELÉFONO: {{algo.cliente.telefono}} </th>
+							 </tr>
+						 </thead>
+				</table>
+			<table id="encabezado3" class="table table-bordered table-striped">
+							 <thead>
+								 <tr>
+											<th style="border:1px solid black; padding: 2px;">VENDEDOR: {{algo.vendedor}} </th>
+											<th style="border:1px solid black; padding: 2px;">MÁQUINA: {{algo.maquina}} </th>
+											<th style="border:1px solid black; padding: 2px;">PAGO: {{algo.formaPago}} </th>
+								 </tr>
+							 </thead>
+			</table>
+		{% endfor %}
+
+		<table id="detalle_factura" class="table table-bordered table-striped">
+	    <thead>
+	        <tr>
+						<th style="border:1px solid black; padding: 2px;">SERIE</th>
+            <th style="border:1px solid black; padding: 2px;">PRODUCTO</th>
+            <th style="border:1px solid black; padding: 2px;">CANTIDAD</th>
+            <th style="border:1px solid black; padding: 2px;">VR. UNITARIO</th>
+            <th style="border:1px solid black; padding: 2px;">VALOR TOTAL</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+		    	{% for factura in ventas %}
+		    		<tr>
+		    			<td align="center" style="border:1px solid black; padding: 2px;">{{factura.producto.codigo}}</td>
+		    			<td align="center" style="border:1px solid black; padding: 2px;">{{factura.producto}}</td>
+		    			<td align="center" style="border:1px solid black; padding: 2px;">{{factura.cantidad}}</td>
+		    			<td align="center" style="border:1px solid black; padding: 2px;">{{factura.precio}}</td>
+              <td align="center" style="border:1px solid black; padding: 2px;">{{factura.subtotal}}</td>
+		    		</tr>
+		    	{% endfor %}
+	    </tbody>
+      {% for algo in datoFactura %}
+			<thead>
+					<tr>
+						<th></th><th></th><th></th>
+						<th style="border:1px solid black; padding: 2px;">Subtotal:</th>
+						<td align="center" style="border:1px solid black; padding: 2px;">${{algo.subtotal}}</td>
+					</tr>
+			</thead>
+			<thead>
+					<tr>
+						<th></th><th></th><th></th>
+						<th style="border:1px solid black; padding: 2px;">I.V.A</th>
+						<td align="center" style="border:1px solid black; padding: 2px;">${{algo.iva}}</td>
+					</tr>
+			</thead>
+      <thead>
+          <tr>
+            <th></th><th></th><th></th>
+            <th style="border:1px solid black; padding: 2px;">Total</th>
+            <th style="border:1px solid black; padding: 2px;">${{algo.total}}</th>
+          </tr>
+      </thead>
+      {% endfor %}
+		</table>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+
+
+
+<table id="example1" class="table table-bordered table-striped">
+    
+    <thead>
+        <tr>
+
+            <th>Dni</th>                                      
+            <th>Nombre</th> 
+            <th>Apellido</th>                              
+            <th>Telefono</th>
+            <th></th>                         
+        </tr>
+    </thead>
+    <tbody>
+    	{% for pr in clientes %}
+    		<tr>
+    			<td>{{pr.dni}}</td>
+    			<td>{{pr.nombre}}</td>
+    			<td>{{pr.apellidos}}</td>
+    			<td>{{pr.telefono}}</td>
+				<td><a href="{%url 'cliente:cliente_detail' pr.dni%}"><span class="icon fa-eye "></span></a>
+				<a href="{%url 'cliente:cliente_edit' pr.dni %}"><span class="icon fa-pencil-square-o"></span></a>
+				<a href="{% url 'cliente:cliente_delete' pr.dni %}"><span class="icon fa-trash"></span></a></td>
+    		</tr>
+    	{% endfor %}
+    </tbody>	
+
+</table>
+
+{%endblock%}

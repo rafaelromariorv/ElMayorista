@@ -1,0 +1,19 @@
+{%extends "system_index.html"%}
+
+{% block system_Contable %}
+
+<ul>
+<form method="post">
+<a href="{%url 'factura:factura_detail' 11%}"><span class="icon fa-arrow-left "></span></a>
+
+	<header>
+				<h2>Detalles</h2>
+	</header>
+
+
+
+		{% csrf_token %}
+		{{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+{% endblock %}

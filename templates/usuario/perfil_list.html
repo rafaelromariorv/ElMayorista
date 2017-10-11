@@ -1,0 +1,35 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+
+
+<table id="example1" class="table ">
+    <thead>
+        <tr>
+            <th>Usuario</th>                                      
+            <th>Nombre</th> 
+            <th>Apellido</th>                              
+            <th>ID</th>
+            <th>Telefono</th>
+            <th>Dirección</th>
+            <th></th>                      
+        </tr>
+    </thead>
+    <tbody>
+    	{% for pr in object_list %}
+    		<tr>
+    			<td>{{pr.user}}</td>
+				<td>{{pr.user.first_name}}</td>
+				<td>{{pr.user.last_name}}</td>
+				<td>{{pr.numeroDocumento}}</td>
+				<td>{{pr.telefono}}</td>
+				<td>{{pr.direccion}}</td>
+				<td><a href="{% url 'usuario:perfil_edit' pr.id %}"><span class="icon fa-pencil-square-o"></span></a></td>
+    		</tr>
+    	{% endfor %}
+    </tbody>	
+
+</table>
+
+
+{%endblock%}

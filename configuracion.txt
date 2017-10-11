@@ -1,0 +1,29 @@
+------CONFIGURACION BASE DE DATOS Y USUARIO POSTGRESQL----------
+sudo -i -u postgres
+createdb dbmayorista
+createuser -P adminmayorista
+contraseña: Pl4st1c0Quid4
+
+
+psql dbmayorista
+GRANT ALL PRIVILEGES ON DATABASE dbmayorista TO adminmayorista;
+
+
+django
+virtualenv env
+pip freeze
+pip install -r requirements.txt
+
+conf de heroku 
+django-admin.py startproject plataforma
+./manage.py migrate
+./manage.py createsuperuser
+AdminMayorista
+Pl4st1c0
+
+Gerente
+Jaime
+Hola1234
+
+# aplicaciones
+Perfil

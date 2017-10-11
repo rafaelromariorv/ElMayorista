@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		{%load staticfiles%}
+		<title>Sistema</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets2/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="{% static "css2/main.css"%}" />
+		<!--<link rel="stylesheet" href="assets/css/main.css" />   -->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets2/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets2/css/ie9.css" /><![endif]-->
+		{% block css %}{% endblock css %}
+	</head>
+	<body>
+
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<!--<span class="image avatar48"><img src="images2/avatar.jpg" alt="" /></span>-->
+							<h1 id="title">{{ user.username }}</h1>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+
+							<ul>
+
+								<li><a href="{% url 'usuario:system_index' %}" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Inicio</span></a></li>
+								{% if not user.perfil %}
+								<li><a href="{% url 'usuario:perfil_insert' %}" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Perfil</span></a></li>
+								{%endif%}
+								<li><a href="{% url 'usuario:perfil_list' %}" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Ver Perfil</span></a></li>
+
+
+								<li><h4>----factura-----</h4></li>
+								<li><a href="{% url 'factura:factura_venta' %}" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-save">facturar</span></a></li>
+								<li><a href="{%url 'factura:factura_list'%}" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-check-square">Listar</span></a></li>
+
+								<li><h4>---Clientes----</h4></li>
+								<li><a href="{% url 'cliente:cliente_list' %}" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-check-square">Listar</span></a></li>
+								<li><a href="{% url 'cliente:cliente_insert' %}" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-save">Nuevo</span></a></li>
+
+								<li><h4>----Inventario-----</h4></li>
+								<li><a href="{% url 'inventario:inventario_list' %}" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-check-square">Listar</span></a></li>
+								<li><a href="{% url 'inventario:inventario_insert' %}" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-save">Nuevo</span></a></li>
+
+
+								<li><h4>---Proveedores----</h4></li>
+								<li><a href="{% url 'proveedor:proveedor_list' %}" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-check-square">Listar</span></a></li>
+								<li><a href="{% url 'proveedor:proveedor_insert' %}" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-save">Nuevo</span></a></li>
+
+
+
+								<li><h4>---Salir---</h4></li>
+								<li><a href="{%url 'usuario:logout'%}" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-sign-out">log Out</span></a>
+								</li>
+
+							</ul>
+						</nav>
+
+				</div>
+
+				<div class="bottom">
+
+					<!-- Social Icons -->
+						<ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" target="_blank" class="icon fa-instagram"><span class="label">Facebook</span></a></li>
+
+						</ul>
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Intro
+					<section id="top" class="one dark cover">
+						<div class="container">
+							<header>
+								<center><h2 class="alt">El Mayorista</h2>
+								<p>Sistema contable.</p>
+							</header>
+						</div>
+					</section>-->
+					<!-- SISTEMA CONTABLE  -->
+					<section id="sistema" class="two" >
+						<div class="container">
+							{% block system_Contable %}
+							{%endblock%}
+						</div>
+					</section>
+
+			</div>
+
+
+
+
+
+
+
+		<!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>Dev: <a href="http://hoodeddeveloper.com">Hooded Developer</a></li>
+					</ul>
+
+			</div>
+
+
+
+		<!-- Scripts
+
+				Todos los que estan unidos estaban comentados para funcionar el ajax
+				<script src="{% static "js2/DjangoAjax.js"%}"></script>
+
+			<script src="{% static "js2/jquery.min.js"%}"></script>
+			<script src="{% static "js2/jquery.scrolly.min.js"%}"></script>
+			<script src="{% static "js2/jquery.scrollzer.min.js"%}"></script>
+			<script src="{% static "js2/skel.min.js"%}"></script>
+			<script src="{% static "js2/util.js"%}"></script>
+			<script src="{% static "js2/main.js"%}"></script>-->
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+
+			<!--	Necesario para usar ajax de busqueda de proveedores en este caso-->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+			<script type="text/javascript" src="{% static "js2/ajax.js" %}"></script>
+			<!--{% block js %}
+			{% endblock %}-->
+
+	</body>
+</html>

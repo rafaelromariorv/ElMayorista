@@ -1,0 +1,126 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+
+<h2>Crear factura<h2>
+
+<h6>vendedor: </br>
+    nombres: {{ user.first_name}}</br>
+    apellidos: {{ user.last_name}}</br>
+</h6>
+
+
+
+  <form method="GET" action="{% url 'factura:search_Cliente'%}" id="c-buscar">
+      <div>
+          <input type="text" name="dni" placeholder="DNI de cliente">
+          <input type="submit" value="Buscar">
+      </div>
+  </form>
+  <h5><div id="clientes"></div></h5>
+  <h5>
+  <br>
+      Identificación: <span id="c-dni"></span><br/>
+      nombre: <span id="c-nombre"></span><br/>
+      <select id="f-tipoPago">
+       <option value="efectivo">Efectivo</option>
+       <option value="cheque">Cheque</option>
+       <option value="tarjeta débito">Tarjeta débito</option>
+       <option value="tarjeta crédito">Tarjeta crédito</option>
+       <option value="venta a crédito">Venta a crédito</option>
+       <option value="bono">Venta a crédito</option>
+       <option value="vale">Vale</option>
+       <option value="otros">Otros</option>
+     </select>
+       tipo de pago: <span id="f-algo"></span><br/>
+     <input type="text" name="Mid" id="f-maquinaid" value="3CR02409M9" disabled=True>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="clientes">
+           Cancelar
+       </button>
+       <button type="button" class="btn btn-primary" id="c-seleccionar">
+           Seleccionar
+       </button>
+   </div>
+  </h5>
+
+
+
+
+
+  <form method="GET" action="{% url 'factura:search_Producto' %}" id="p-buscar">
+      <div>
+          <input type="text" name="codigo" placeholder="Codigo de Producto">
+          <input type="submit" value="Buscar">
+      </div>
+  </form>
+  <h5><div id="productos"></div></h5>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="clientes">
+        Cancelar
+    </button>
+    <button type="button" class="btn btn-primary" id="p-seleccionar">
+        Seleccionar</button>
+
+</div>
+  <table class="table table-striped" id="tb-detalle">
+    <thead>
+        <tr align="center">
+            <th>Codigo</th>
+            <th>Producto</th>
+            <th>Valor venta</th>
+            <th>Cantidad</th>
+            <th>IVA</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<div class="row">
+    <!-- accepted payments column -->
+    <div class="col-xs-6">
+        <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+
+        </p>
+    </div><!-- /.col -->
+    <div class="col-xs-6">
+        <p class="lead">totalización de compra en curso</p>
+        <div class="table-responsive" align="center">
+            <table class="table" >
+                <tr>
+                    <th style="width:50%">Subtotal:</th>
+                    <td align="center"> <label id='sum-subtotal'>.00</label></td>
+                </tr>
+                <tr>
+                    <th>Igv(18%)</th>
+                    <td align="center"><label id='sum-tax'>.00</label></td>
+                </tr>
+                <tr>
+                    <th>Total: $</th>
+                    <td align="center"><label id='sum-total'>.00</label></td>
+                </tr>
+            </table>
+        </div>
+    </div><!-- /.col -->
+</div><!-- /.row -->
+
+<form action="/factura/venta" method="post" onsubmit="onEnviar()">
+    {% csrf_token %}
+    <input id="proceso" name="proceso" type="hidden" />
+    <button class="btn btn-success pull-right" id="comprar"><i class="fa fa-credit-card"></i> Realizar Venta</button>
+</form>
+
+
+{% if user.is_authenticated %}
+    {% if messages %}{% for message in messages %}
+      <div class="alert alert-danger alert-dismissable">
+      <i class="fa fa-info"></i>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <b>Alert!</b> {{ message }}
+      </div>
+  {% endfor %}{% endif %}{% endif %}
+
+
+{%endblock%}

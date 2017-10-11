@@ -1,0 +1,12 @@
+
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+<a href="{%url 'inventario:inventario_list' %}"><span class="icon fa-arrow-left "></span></a>
+<form method="post">
+	{% csrf_token %}
+    ¿Estás seguro que deseas borrar "{{ object }}"?
+    <input type="submit" value="Borrar" />
+</form>
+
+{%endblock%}

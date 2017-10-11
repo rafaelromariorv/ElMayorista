@@ -1,0 +1,44 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+
+	<select>
+
+		<option>Elije un proveedor</option>
+		{% for pr in proveedores %}
+			<option value="{{pr.id}}">{{pr.nombreEmpresa}}</option>
+			
+		{% endfor %}
+	</select>
+
+	<div id="datos">
+		
+	</div>
+
+{% endblock %}
+
+
+
+{% block js %}
+	<script >
+		$('select').on('change',inicio);
+		function inicio(){
+			var id = $(this).val();
+			$.ajax({
+				data: {'id':id},
+				url: '/proveedor/busqueda_ajax/',
+				type: 'get',
+				
+				/*success: function(data){
+					console.log(data)
+					/*var html=""
+					for(var i = 0; i<data.length; i++){
+						html += '<ul><li>'+data[i].fields.nombreEmpresa+'</li><li>'+data[i].fields.nombreRepresentante+'</li></lu>'
+					}
+					$('#datos').html(html);*/
+				/*}*/ 
+			});
+		}
+	</script>
+
+{% endblock %}

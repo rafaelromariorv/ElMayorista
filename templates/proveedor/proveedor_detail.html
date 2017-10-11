@@ -1,0 +1,18 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+<a href="{%url 'proveedor:proveedor_list' %}"><span class="icon fa-arrow-left "></span></a>
+	<ul>
+		<li><b>Nit: </b>{{proveedor.nit}}</li>
+		<li><b>Empresa: </b>{{proveedor.nombreEmpresa}}</li>
+		<li><b>Representante: </b>{{proveedor.nombreRepresentante}} {{proveedor.apellidoRepresentante}}</li>
+		<li><b>Telefonos: </b>{{proveedor.telefonoUno}}  |||  {{proveedor.telefonoDos}}</li>
+		<li><b>Email: </b>{{proveedor.correo}}</li>
+		<li><b>Sitio Web: </b>{{proveedor.sitioWeb}}</li>
+		<li><b>Ciudad: </b>{{proveedor.ciudad}}</li>
+		<li><b>Dirección: </b>{{proveedor.direccion}}</li>
+		<li><b>Banco: </b>{{proveedor.banco}}</li>
+		<li><b>Tipo de cuenta: </b>{{proveedor.tipoCuenta}}</li>
+		<li><b>Numero de cuenta: </b>{{proveedor.numeroCuenta}}</li>
+	</ul>
+{%endblock%}
